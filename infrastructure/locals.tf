@@ -1,4 +1,7 @@
 locals {
   project_prefix = "${var.unique_prefix}-${var.aws_region}-${var.environment}"
-  s3_prefix      = "trigger_files/"
+
+  # default ami - Amazon Linux 2023
+  ami_id        = "ami-0c45689cf7ad8a412"
+  instance_type = "t2.micro"
 }
