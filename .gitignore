@@ -1,3 +1,6 @@
+# pem files / keys
+*.pem
+
 # .zip files - effect of packing .py script
 *.zip
 

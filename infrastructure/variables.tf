@@ -10,6 +10,10 @@ variable "unique_prefix" {
 
 variable "environment" {
   type    = string
-  default = "test"
+  default = "dev"
 }
 
+variable "server_name" {
+  type    = string
+  default = "Stratosphere"
+}
