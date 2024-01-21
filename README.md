@@ -1,7 +1,10 @@
+# Description
 
-## Deploy
+blah blah
 
-### Automated cloud infrastructure deployment
+# Deploy
+
+## Automated cloud infrastructure deployment
 
 Contains submodule with s3 bucket & dynamodb table for remote backend
 
@@ -9,12 +12,12 @@ Contains submodule with s3 bucket & dynamodb table for remote backend
 sh deploy_remote.sh
 ```
 
-### Destroy All Resources
+## Destroy All Resources
 ```shell
 sh destroy_infrastructure.sh
 ```
 
-### Pre commit
+## Pre commit
 ```
 pre-commit install
 ```
