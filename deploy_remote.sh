@@ -28,6 +28,3 @@ terraform apply -auto-approve
 wait $!
 
 echo 'Succesfully Deployed All Resources'
-
-rm ../lambda/lambda.zip
-echo 'Deleted lambda.zip'
