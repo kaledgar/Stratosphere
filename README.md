@@ -1,6 +1,13 @@
+<p align="center">
+  <img src="misc/stratosphere_logo.png" />
+</p>
+
+
 # Description
 
 blah blah
+
+Work in progress :)
 
 # Deploy
 
