@@ -7,3 +7,5 @@ wait $!
 cd remote_state/
 terraform destroy -lock=false
 wait $!
+
+rm -rf misc/deployer_key.pem
