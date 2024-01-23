@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "unique_prefix" {
   type    = string
-  default = "any-sample-prefix"
+  default = "kaledgar"
 }
 
 variable "environment" {

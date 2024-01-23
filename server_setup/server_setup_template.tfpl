@@ -1,0 +1,5 @@
+# set key file permission
+chmod 400 "${var_deployer_key}"
+
+# connect with server using key via ssh
+ssh -i "${var_deployer_key}" ec2-user@${var_server_public_ip}
