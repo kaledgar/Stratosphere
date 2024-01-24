@@ -1,6 +1,14 @@
+###############################
+##------------VPC--------------
+###############################
+
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
+
+###############################
+##-----------SUBNET------------
+###############################
 
 resource "aws_subnet" "main_subnet_a" {
   vpc_id                  = aws_vpc.main.id
@@ -9,12 +17,9 @@ resource "aws_subnet" "main_subnet_a" {
   map_public_ip_on_launch = true
 }
 
-resource "aws_internet_gateway" "main_gateway" {
-  vpc_id = aws_vpc.main.id
-  tags = {
-    Name = "main"
-  }
-}
+###############################
+##--------ROUTE-TABLE----------
+###############################
 
 resource "aws_route_table" "rt" {
   vpc_id = aws_vpc.main.id
@@ -28,6 +33,10 @@ resource "aws_route_table_association" "public_subnet_asso" {
   subnet_id      = aws_subnet.main_subnet_a.id
   route_table_id = aws_route_table.rt.id
 }
+
+###############################
+##-------SECURITY-GROUP--------
+###############################
 
 resource "aws_security_group" "webtraffic" {
   name   = "Minecraft Server Security Group"
@@ -56,4 +65,24 @@ resource "aws_security_group" "webtraffic" {
     protocol    = "udp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  egress {
+    description = "Outbound for updating the instance"
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
+
+###############################
+##------INTERNET-GATEWAY-------
+###############################
+
+resource "aws_internet_gateway" "main_gateway" {
+  vpc_id = aws_vpc.main.id
+  tags = {
+    Name = "main"
+  }
+}
+
