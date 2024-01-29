@@ -4,10 +4,10 @@ data "aws_instance" "server_instance" {
 
 
 
-resource "local_file" "start_setup_script" {
-  filename = "../server_setup/server_setup.sh"
+resource "local_file" "connect_ssh_script" {
+  filename = "../scripts/connect_ssh.sh"
 
-  content = templatefile("../server_setup/server_setup_template.tfpl",
+  content = templatefile("../scripts/connect_ssh.tfpl",
     {
       var_deployer_key     = "deployer_key.pem"
       var_server_public_ip = data.aws_instance.server_instance.public_ip
@@ -15,7 +15,6 @@ resource "local_file" "start_setup_script" {
   )
 
   file_permission = "0400"
-
-  depends_on = [data.aws_instance.server_instance]
+  depends_on      = [data.aws_instance.server_instance]
 }
 
