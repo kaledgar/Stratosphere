@@ -17,6 +17,12 @@ resource "aws_subnet" "main_subnet_a" {
   map_public_ip_on_launch = true
 }
 
+resource "aws_route_table_association" "public_subnet_asso_a" {
+  subnet_id      = aws_subnet.main_subnet_a.id
+  route_table_id = aws_route_table.rt.id
+}
+
+
 ###############################
 ##--------ROUTE-TABLE----------
 ###############################
@@ -27,11 +33,6 @@ resource "aws_route_table" "rt" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.main_gateway.id
   }
-}
-
-resource "aws_route_table_association" "public_subnet_asso" {
-  subnet_id      = aws_subnet.main_subnet_a.id
-  route_table_id = aws_route_table.rt.id
 }
 
 ###############################

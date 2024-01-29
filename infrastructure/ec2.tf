@@ -30,7 +30,7 @@ resource "aws_key_pair" "deployer_key" {
 
 resource "local_file" "private_key" {
   content         = tls_private_key.rsa_4096.private_key_pem
-  filename        = "../server_setup/deployer_key.pem"
+  filename        = local.rsa_key_filepath
   file_permission = "0400"
 }
 
