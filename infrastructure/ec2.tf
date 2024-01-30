@@ -10,6 +10,10 @@ module "ec2_instance" {
   vpc_security_group_ids = [aws_security_group.webtraffic.id]
   subnet_id              = aws_subnet.main_subnet_a.id
 
+  user_data = file(local.first_startup_script_filepath)
+
+  iam_instance_profile = aws_iam_instance_profile.instance_profile.name
+
   tags = {
     terraform   = "True"
     environment = "dev"
