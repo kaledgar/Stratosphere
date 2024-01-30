@@ -2,6 +2,20 @@
 
 # update yum
 sudo yum update
+
+# install docker
+sudo yum install docker -y
+
+# start docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+
+mkdir downloads
+cd downloads
+
+## other things below
+
+# install java
 sudo yum install java -y
 
 # download papermc server file
