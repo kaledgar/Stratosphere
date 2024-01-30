@@ -10,8 +10,20 @@ sudo yum install docker -y
 sudo service docker start
 sudo usermod -a -G docker ec2-user
 
+# directory with Dockerfile
 mkdir downloads
 cd downloads
+
+# scp -i deployer_key.pem Dockerfile ec2-user@3.249.46.239:/home/ec2-user/downloaded
+
+sudo docker build -t stratosphere-mc:1.0 .
+sudo ocker run -d -p 25565:25565 --name my-stratosphere stratosphere-mc:1.0
+
+# get logs
+sudo docker logs my-stratosphere
+
+
+###########################################33
 
 ## other things below
 
